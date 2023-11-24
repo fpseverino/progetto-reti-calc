@@ -20,7 +20,7 @@ MF2='Medio':'trimf',[17.0833333333333 27.5 37.9166666666667]
 MF3='Alto':'trimf',[29.5833333333333 40 50.4166666666667]
 
 [Input2]
-Name='UmiditàA'
+Name='UmiditàT'
 Range=[30 90]
 NumMFs=3
 MF1='Basso':'trimf',[5 30 55]
@@ -28,12 +28,12 @@ MF2='Medio':'trimf',[35 60 85]
 MF3='Alto':'trimf',[65 90 115]
 
 [Input3]
-Name='UmiditàT'
-Range=[35 100]
+Name='UmiditàA'
+Range=[35 95]
 NumMFs=3
-MF1='Basso':'trimf',[7.91666666666667 35 62.0833333333333]
-MF2='Medio':'trimf',[40.4166666666667 67.5 94.5833333333333]
-MF3='Alto':'trimf',[72.9166666666667 100 127.083333333333]
+MF1='Basso':'trimf',[10 35 60]
+MF2='Medio':'trimf',[40 65 90]
+MF3='Alto':'trimf',[70 95 120]
 
 [Output1]
 Name='Potenza'

@@ -18,7 +18,7 @@ switch segment
 
         if ~isempty(temp_msg)
             data.umiditaTerreno = temp_msg;
-            disp(['Controllore: valore umiditò terreno ricevuto: ' num2str(data.umiditaTerreno)]);
+            disp(['Controllore: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno)]);
         else
             disp('Controllore: non ho ricevuto nessun valore...');
         end
@@ -31,7 +31,7 @@ switch segment
 
         if ~isempty(temp_msg)
             data.umiditaAria = temp_msg;
-            disp(['Controllore: valore temperatura ricevuto: ' num2str(data.umiditaAria)]);
+            disp(['Controllore: valore umidità aria ricevuto: ' num2str(data.umiditaAria)]);
         else
             disp('Controllore: non ho ricevuto nessun valore...');
         end
