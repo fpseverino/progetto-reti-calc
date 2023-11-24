@@ -2,9 +2,9 @@ function Gateway_init
 
 ttInitKernel('prioFP');
 
-ttCreateMailBox('power_ping', 10);
-ttCreateMailbox('power_response', 10);
-ttCreateMailBox('control_signal', 10);
+ttCreateMailBox('temp_signal', 10);
+ttCreateMailbox('umid_T_signal', 10);
+ttCreateMailBox('umid_A_signal', 10);
 
 % creazione gateway
 nome_g = 'Task_Gateway';
