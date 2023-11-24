@@ -1,8 +1,10 @@
 function Controllore_init
 
+%% inizializzazione del kernel
 ttInitKernel('prioFP');
 
 ttSetKernelParameter('energyconsumption', 0.010);
+
 
 nome_c = 'Task_controllore';
 deadline = 10;
