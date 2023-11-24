@@ -32,6 +32,16 @@ switch segment
 
         exectime = 0.002;
     case 4
+        var = ttGetMsg(1);
+
+        if ~isempty(var)
+                ttSendMsg([3 1], var, 1024);
+                exectime = 0.02;
+        else
+            disp('Gateway: errore...');
+            exectime = 0.02;
+        end
+    case 5
         if data.temperatura ~= 0
             msg.messaggio = data.temperatura;
             msg.type = 'temp_signal';

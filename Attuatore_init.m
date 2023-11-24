@@ -2,8 +2,6 @@ function Attuatore_init
 
 ttInitKernel('prioFP');
 
-ttCreateMailbox('control_signal', 10);
-
 nome_c = 'Task_Attuatore';
 deadline = 10;
 funzione_c = 'Attuatore_fnctn';

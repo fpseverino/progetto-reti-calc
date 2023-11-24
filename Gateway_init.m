@@ -14,6 +14,7 @@ funzione = 'Gateway_fnctn';
 
 % creazione del Task
 ttCreateTask(nome_g, deadline, funzione);
+ttAttachNetworkHandler(2, nome_g);
 
 % creazione del network handler
 nome_nh = 'nw_handlergat';

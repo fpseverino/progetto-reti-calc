@@ -5,6 +5,7 @@ ttInitKernel('prioFP');
 ttCreateMailbox('temp_signal', 10);
 ttCreateMailbox('umid_T_signal', 10);
 ttCreateMailbox('umid_A_signal', 10);
+%ttCreateMailbox('control_signal', 10);
 
 ttSetKernelParameter('energyconsumption', 0.010);
 

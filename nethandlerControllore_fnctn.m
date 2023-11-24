@@ -1,10 +1,10 @@
 function[exectime, data] = nethandlerControllore_fnctn(segment, data)
 
 temp = ttGetMsg(2);
-disp('Controllore: messaggio ricevuto...');
-disp('Contenuto di temp:');
-disp(['Tipo: ' temp.type]);
-disp(['Messaggio: ' temp.messaggio]);
+%disp('Controllore: messaggio ricevuto...');
+%disp('Contenuto di temp:');
+%disp(['Tipo: ' temp.type]);
+%disp(['Messaggio: ' temp.messaggio]);
 
 ttTryPost(temp.type, temp.messaggio);
 

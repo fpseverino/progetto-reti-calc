@@ -51,7 +51,7 @@ switch segment
 
         msg.messaggio.potenza = data.potenza;
         msg.type = 'control_signal';
-        ttSendMsg([3 10], msg, 80);
+        ttSendMsg(4, msg, 80);
 
         exectime = -1;
 
