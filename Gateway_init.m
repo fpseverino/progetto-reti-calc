@@ -2,9 +2,10 @@ function Gateway_init
 
 ttInitKernel('prioFP');
 
-ttCreateMailBox('power_ping', 10);
-ttCreateMailbox('power_response', 10);
-ttCreateMailBox('control_signal', 10);
+
+ttCreateMailbox('temp_signal', 10);
+ttCreateMailbox('umid_T_signal', 10);
+ttCreateMailbox('umid_A_signal', 10);
 
 % creazione gateway
 nome_g = 'Task_Gateway';
@@ -14,7 +15,9 @@ funzione = 'Gateway_fnctn';
 % creazione del Task
 ttCreateTask(nome_g, deadline, funzione);
 
-% Task in ascolto
-ttAttachNetworkHandler(1, nome_g);
-ttAttachNetworkHandler(2, nome_g);
-ttAttachNetworkHandler(3, nome_g);
+% creazione del network handler
+nome_nh = 'nw_handlergat';
+funzione_nh = 'nethandgat_fnctn';
+
+ttCreateHandler(nome_nh, 1, funzione_nh);
+ttAttachNetworkHandler(1, nome_nh);

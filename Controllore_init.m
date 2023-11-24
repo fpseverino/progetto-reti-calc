@@ -1,16 +1,15 @@
 function Controllore_init
 
-%% inizializzazione del kernel
 ttInitKernel('prioFP');
 
-ttCreateMailBox('temp_signal', 10);
+ttCreateMailbox('temp_signal', 10);
 ttCreateMailbox('umid_T_signal', 10);
-ttCreateMailBox('umid_A_signal', 10);
+ttCreateMailbox('umid_A_signal', 10);
 
 ttSetKernelParameter('energyconsumption', 0.010);
 
 
-nome_c = 'Task_controllore';
+nome_c = 'Task_Controllore';
 deadline = 10;
 funzione = 'Controllore_fnctn';
 

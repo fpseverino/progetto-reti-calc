@@ -2,16 +2,59 @@ function[exectime, data] = Gateway_fnctn(segment, data)
 
 switch segment
     case 1
+        temp_msg = ttTryFetch('temp_signal');
+        if ~isempty(temp_msg)
+            data.temperatura = temp_msg;
+            disp(['Gateway: valore temperatura ricevuto: ' num2str(data.temperatura) ]);
+        else
+            disp('Gateway: nessun valore ricevuto...');
+        end
+
         exectime = 0.002;
     case 2
-        for nw = 1:2
-            ttGetMsg(nw);
-            % ciclo for per mandare i messaggi alla destinazione corretta
-            if ~isempty(data.msg)
-                ttSendMsg(data.msg.destination, data.msg, 512);
-                exectime = exectime + 0.002;
-            end
+        temp_msg = ttTryFetch('umid_T_signal');
+        if ~isempty(temp_msg)
+            data.umiditaTerreno = temp_msg;
+            disp(['Gateway: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno) ]);
+        else
+            disp('Gateway: nessun valore ricevuto...');
         end
+
+        exectime = 0.002;
     case 3
+        temp_msg = ttTryFetch('umid_A_signal');
+        if ~isempty(temp_msg)
+            data.umiditaAria = temp_msg;
+            disp(['Gateway: valore umidità aria ricevuto: ' num2str(data.umiditaAria) ]);
+        else
+            disp('Gateway: nessun valore ricevuto...');
+        end
+
+        exectime = 0.002;
+    case 4
+        if data.temperatura ~= 0
+            msg.messaggio = data.temperatura;
+            msg.type = 'temp_signal';
+            ttSendMsg([2 1], msg, 80);
+        else
+            disp('Gateway: non posso inoltrare nessun valore...');
+        end
+
+        if data.umiditaTerreno ~= 0
+            msg.messaggio = data.umiditaTerreno;
+            msg.type = 'umid_T_signal';
+            ttSendMsg([2 1], msg, 80);
+        else
+            disp('Gateway: non posso inoltrare nessun valore...');
+        end
+
+        if data.umiditaAria ~= 0
+            msg.messaggio = data.umiditaAria;
+            msg.type = 'umid_A_signal';
+            ttSendMsg([2 1], msg, 80);
+        else
+            disp('Gateway: non posso inoltrare nessun valore...');
+        end
+
         exectime = -1;
 end
