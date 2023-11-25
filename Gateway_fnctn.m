@@ -36,7 +36,7 @@ switch segment
     if data.temperatura ~= 0
         msg.messaggio = data.temperatura;
         msg.type = 'temp_signal';
-        ttSendMsg([2 1], msg, 80);
+        ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore temperatura...');
     end
@@ -44,7 +44,7 @@ switch segment
     if data.umiditaTerreno ~= 0
         msg.messaggio = data.umiditaTerreno;
         msg.type = 'umid_T_signal';
-        ttSendMsg([2 1], msg, 80);
+        ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore umidità terreno...');
     end
@@ -52,7 +52,7 @@ switch segment
     if data.umiditaAria ~= 0
         msg.messaggio = data.umiditaAria;
         msg.type = 'umid_A_signal';
-        ttSendMsg([2 1], msg, 80);
+        ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore umidità aria...');
     end

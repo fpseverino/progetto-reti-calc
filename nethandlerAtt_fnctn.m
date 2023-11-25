@@ -2,7 +2,7 @@ function[exectime, data] = nethandlerAtt_fnctn(segment, data)
 
 temp = ttGetMsg;
 
-ttTryPost(temp.type, temp.msg);
+ttTryPost(temp.type, temp.messaggio);
 
 ttCreateJob('Task_Attuatore');
 

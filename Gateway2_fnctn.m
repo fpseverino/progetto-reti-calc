@@ -2,30 +2,45 @@ function[exectime, data] = Gateway2_fnctn(segment, data)
 
 switch segment
     case 1
-        exectime = 0.02;
-    case 2
         temp_msg = ttTryFetch('control_signal');
-
-        if ~isempty(temp_msg)
-            data.temperatura = temp_msg.temperatura;
-            data.umiditaTerreno = temp_msg.umiditaTerreno;
-            data.umiditaAria = temp_msg.umiditaAria;
-            data.potenza = temp_msg.potenza;
-
-            disp(['Controllore: ho ricevuto la temperatura: ' num2str(data.temperatura) ...
-                ', umidità aria: ' num2str(data.umiditaAria) ...
-                ', umidità terreno: ' num2str(data.umiditaTerreno)]);
-
-            msg.messaggio.temperatura = temp_msg.temperatura;
-            msg.messaggio.umiditaTerreno = temp_msg.umiditaTerreno;
-            msg.messaggio.umiditaAria = temp_msg.umiditaAria;
-            msg.messaggio.potenza = temp_msg.potenza;
-            msg.type = 'control_signal';
+        temp_msg.type = 'control_signal';
+        data.temperatura = temp_msg.temperatura;
+        data.umiditaT = temp_msg.umiditaTerreno;
+        data.umiditaA = temp_msg.umiditaAria;
+        data.potenza = temp_msg.potenza;
+        %disp('valore di temp_msg');
+        %disp(temp_msg);
+        exectime = 0.01;
+    
+    case 2
+        if data.umiditaT ~= 0
+            msg.messaggio = data.umiditaT;
+            msg.type = 'umid_T_signal';
             ttSendMsg([3 1], msg, 80);
         else
-            disp('Controllore: errore non ho ricevuto i messaggi corretti...');
+            disp('errore');
         end
-        exectime = 0.02;     
-    case 3
+        if data.umiditaA ~= 0
+            msg.messaggio = data.umiditaA;
+            msg.type = 'umid_A_signal';
+            ttSendMsg([3 1], msg, 80);
+        else
+            disp('errore');
+        end
+        if data.temperatura ~= 0
+            msg.messaggio = data.temperatura;
+            msg.type = 'temp_signal';
+            ttSendMsg([3 1], msg, 80);
+        else
+            disp('errore');
+        end
+        if data.potenza ~= 0
+            msg.messaggio = data.potenza;
+            msg.type = 'p_signal';
+            ttSendMsg([3 1], msg, 80);
+        else
+            disp('errore');
+        end
+
         exectime = -1;
 end

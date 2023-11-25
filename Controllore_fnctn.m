@@ -54,6 +54,4 @@ switch segment
         ttSendMsg(4, msg, 80);
 
         exectime = -1;
-
-
 end
