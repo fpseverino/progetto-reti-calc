@@ -13,27 +13,27 @@ DefuzzMethod='centroid'
 
 [Input1]
 Name='Temperatura'
-Range=[15 40]
+Range=[0 40]
 NumMFs=3
-MF1='Basso':'trimf',[4.58333333333333 15 25.4166666666667]
-MF2='Medio':'trimf',[17.0833333333333 27.5 37.9166666666667]
-MF3='Alto':'trimf',[29.5833333333333 40 50.4166666666667]
+MF1='Basso':'trimf',[-16.6666666666667 0 16.6666666666667]
+MF2='Medio':'trimf',[3.33333333333333 20 36.6666666666667]
+MF3='Alto':'trimf',[23.3333333333333 40 56.6666666666667]
 
 [Input2]
 Name='UmiditàT'
-Range=[30 90]
+Range=[0 90]
 NumMFs=3
-MF1='Basso':'trimf',[5 30 55]
-MF2='Medio':'trimf',[35 60 85]
-MF3='Alto':'trimf',[65 90 115]
+MF1='Basso':'trimf',[-37.5 0 37.5]
+MF2='Medio':'trimf',[7.5 45 82.5]
+MF3='Alto':'trimf',[52.5 90 127.5]
 
 [Input3]
 Name='UmiditàA'
-Range=[35 95]
+Range=[0 95]
 NumMFs=3
-MF1='Basso':'trimf',[10 35 60]
-MF2='Medio':'trimf',[40 65 90]
-MF3='Alto':'trimf',[70 95 120]
+MF1='Basso':'trimf',[-39.5833333333333 0 39.5833333333333]
+MF2='Medio':'trimf',[7.91666666666666 47.5 87.0833333333333]
+MF3='Alto':'trimf',[55.4166666666667 95 134.583333333333]
 
 [Output1]
 Name='Potenza'

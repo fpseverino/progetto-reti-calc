@@ -10,4 +10,5 @@ ttTryPost(temp.type, temp.messaggio);
 
 ttCreateJob('Task_Gateway');
 
+
 exectime = -1;

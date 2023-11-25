@@ -5,9 +5,9 @@ switch segment
         temp_msg = ttTryFetch('temp_signal');
         if ~isempty(temp_msg)
             data.temperatura = temp_msg;
-            disp(['Gateway: valore temperatura ricevuto: ' num2str(data.temperatura) ]);
+            %disp(['Gateway: valore temperatura ricevuto: ' num2str(data.temperatura) ]);
         else
-            disp('Gateway: nessun valore ricevuto...');
+            %disp('Gateway: nessun valore temperatra ricevuto...');
         end
 
         exectime = 0.002;
@@ -15,9 +15,9 @@ switch segment
         temp_msg = ttTryFetch('umid_T_signal');
         if ~isempty(temp_msg)
             data.umiditaTerreno = temp_msg;
-            disp(['Gateway: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno) ]);
+            %disp(['Gateway: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno) ]);
         else
-            disp('Gateway: nessun valore ricevuto...');
+            %disp('Gateway: nessun valore umidità terreno ricevuto...');
         end
 
         exectime = 0.002;
@@ -25,46 +25,62 @@ switch segment
         temp_msg = ttTryFetch('umid_A_signal');
         if ~isempty(temp_msg)
             data.umiditaAria = temp_msg;
-            disp(['Gateway: valore umidità aria ricevuto: ' num2str(data.umiditaAria) ]);
+            %disp(['Gateway: valore umidità aria ricevuto: ' num2str(data.umiditaAria) ]);
         else
-            disp('Gateway: nessun valore ricevuto...');
+            %disp('Gateway: nessun valore umidità aria ricevuto...');
         end
 
         exectime = 0.002;
+
     case 4
-        var = ttGetMsg(1);
+    if data.temperatura ~= 0
+        msg.messaggio = data.temperatura;
+        msg.type = 'temp_signal';
+        ttSendMsg([2 1], msg, 80);
+    else
+        %disp('Gateway: non posso inoltrare valore temperatura...');
+    end
+    
+    if data.umiditaTerreno ~= 0
+        msg.messaggio = data.umiditaTerreno;
+        msg.type = 'umid_T_signal';
+        ttSendMsg([2 1], msg, 80);
+    else
+        %disp('Gateway: non posso inoltrare valore umidità terreno...');
+    end
 
-        if ~isempty(var)
-                ttSendMsg([3 1], var, 1024);
-                exectime = 0.02;
-        else
-            disp('Gateway: errore...');
-            exectime = 0.02;
-        end
+    if data.umiditaAria ~= 0
+        msg.messaggio = data.umiditaAria;
+        msg.type = 'umid_A_signal';
+        ttSendMsg([2 1], msg, 80);
+    else
+        %disp('Gateway: non posso inoltrare valore umidità aria...');
+    end
+    exectime = 0.1;
+
     case 5
-        if data.temperatura ~= 0
-            msg.messaggio = data.temperatura;
-            msg.type = 'temp_signal';
-            ttSendMsg([2 1], msg, 80);
-        else
-            disp('Gateway: non posso inoltrare nessun valore...');
-        end
+        temp_msg = ttTryFetch('control_signal');
 
-        if data.umiditaTerreno ~= 0
-            msg.messaggio = data.umiditaTerreno;
-            msg.type = 'umid_T_signal';
-            ttSendMsg([2 1], msg, 80);
-        else
-            disp('Gateway: non posso inoltrare nessun valore...');
-        end
+        if ~isempty(temp_msg)
+            data.temperatura = temp_msg.temperatura;
+            data.umiditaTerreno = temp_msg.umiditaTerreno;
+            data.umiditaAria = temp_msg.umiditaAria;
+            data.potenza = temp_msg.potenza;
 
-        if data.umiditaAria ~= 0
-            msg.messaggio = data.umiditaAria;
-            msg.type = 'umid_A_signal';
-            ttSendMsg([2 1], msg, 80);
-        else
-            disp('Gateway: non posso inoltrare nessun valore...');
-        end
+            disp(['Controllore: ho ricevuto la temperatura: ' num2str(data.temperatura) ...
+                ', umidità aria: ' num2str(data.umiditaAria) ...
+                ', umidità terreno: ' num2str(data.umiditaTerreno)]);
 
-        exectime = -1;
+            msg.messaggio.temperatura = temp_msg.temperatura;
+            msg.messaggio.umiditaTerreno = temp_msg.umiditaTerreno;
+            msg.messaggio.umiditaAria = temp_msg.umiditaAria;
+            msg.messaggio.potenza = temp_msg.potenza;
+            msg.type = 'control_signal';
+            ttSendMsg([3 1], msg, 80);
+        else
+            disp('Controllore: errore non ho ricevuto i messaggi corretti...');
+        end
+        exectime = -1;     
+               
 end
+

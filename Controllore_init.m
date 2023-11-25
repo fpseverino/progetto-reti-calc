@@ -11,7 +11,7 @@ ttSetKernelParameter('energyconsumption', 0.010);
 
 
 nome_c = 'Task_Controllore';
-deadline = 10;
+deadline = 0.010;
 funzione = 'Controllore_fnctn';
 
 %Creazione del Task controllore
