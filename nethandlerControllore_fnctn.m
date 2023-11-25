@@ -1,6 +1,6 @@
 function[exectime, data] = nethandlerControllore_fnctn(segment, data)
 
-temp = ttGetMsg(2);
+temp = ttGetMsg;
 %disp('Controllore: messaggio ricevuto...');
 %disp('Contenuto di temp:');
 %disp(['Tipo: ' temp.type]);
