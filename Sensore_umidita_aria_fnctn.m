@@ -6,7 +6,7 @@ switch segment
         exectime = 0.02;
     case 2
         data.msg.type = 'umid_A_signal';
-        ttSendMsg(10, data.msg, 80);
+        ttSendMsg(4, data.msg, 80);
         exectime = 0.02;
     case 3
         exectime = -1;
