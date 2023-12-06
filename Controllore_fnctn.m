@@ -44,7 +44,8 @@ switch segment
         ttAnalogOut(3, data.umiditaAria);
 
         data.potenza = ttAnalogIn(1);
-
+        
+        msg.timeStamp = ttCurrentTime;
         msg.messaggio.temperatura = data.temperatura;
         msg.messaggio.umiditaTerreno = data.umiditaTerreno;
         msg.messaggio.umiditaAria = data.umiditaAria;

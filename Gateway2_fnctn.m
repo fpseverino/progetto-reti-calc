@@ -4,12 +4,14 @@ switch segment
     case 1
         temp_msg = ttTryFetch('control_signal');
         temp_msg.type = 'control_signal';
-        data.temperatura = temp_msg.temperatura;
-        data.umiditaT = temp_msg.umiditaTerreno;
-        data.umiditaA = temp_msg.umiditaAria;
-        data.potenza = temp_msg.potenza;
-        %disp('valore di temp_msg');
-        %disp(temp_msg);
+        data.timeStamp = temp_msg.timeStamp;
+        %disp(temp_msg.timeStamp);
+        
+        data.temperatura = temp_msg.messaggio.temperatura;
+        data.umiditaT = temp_msg.messaggio.umiditaTerreno;
+        data.umiditaA = temp_msg.messaggio.umiditaAria;
+        data.potenza = temp_msg.messaggio.potenza;
+
         exectime = 0.01;
     
     case 2
@@ -41,6 +43,11 @@ switch segment
         else
             disp('errore');
         end
+
+        delay = ttCurrentTime - data.timeStamp;
+        Throughput_byte = 80 / 8;
+        Throughput = Throughput_byte / delay;
+        disp(Throughput);
 
         exectime = -1;
 end

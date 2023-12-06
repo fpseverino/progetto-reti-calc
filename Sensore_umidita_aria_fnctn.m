@@ -3,6 +3,7 @@ function[exectime, data] = Sensore_umidita_aria_fnctn(segment, data)
 switch segment
     case 1
         data.msg.messaggio = ttAnalogIn(1);
+        data.msg.timeStamp = ttCurrentTime;
         exectime = 0.02;
     case 2
         data.msg.type = 'umid_A_signal';
