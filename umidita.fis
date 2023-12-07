@@ -1,0 +1,48 @@
+[System]
+Name='umidita'
+Type='mamdani'
+Version=3.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+TypeReductionMethod='karnikmendel'
+
+[Input1]
+Name='Umidità Terreno'
+Range=[30 90]
+NumMFs=3
+MF1='basso':'trimf',[14.0729072907291 39.0729072907291 64.0729072907291],[1],[0.2 0.2]
+MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
+MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+
+[Input2]
+Name='Umidità Aria'
+Range=[30 90]
+NumMFs=3
+MF1='basso':'trimf',[5 30 55],[1],[0.2 0.2]
+MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
+MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+
+[Output1]
+Name='Umidità'
+Range=[30 90]
+NumMFs=3
+MF1='basso':'trimf',[5 30 55],[1],[0.2 0.2]
+MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
+MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 1 (1) : 1
+3 1, 3 (1) : 1
+1 2, 1 (1) : 1
+2 2, 2 (1) : 1
+3 2, 3 (1) : 1
+1 3, 3 (1) : 1
+2 3, 3 (1) : 1
+3 3, 3 (1) : 1

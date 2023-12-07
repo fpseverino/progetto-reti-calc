@@ -43,7 +43,7 @@ switch segment
         else
             disp('errore');
         end
-
+        
         delay = ttCurrentTime - data.timeStamp;
         Throughput_byte = 80 / 8;
         Throughput = Throughput_byte / delay;
