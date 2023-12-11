@@ -12,7 +12,7 @@ switch segment
         data.umiditaA = temp_msg.messaggio.umiditaAria;
         data.potenza = temp_msg.messaggio.potenza;
 
-        exectime = 0.01;
+        exectime = 0.03;
     
     case 2
         if data.umiditaT ~= 0

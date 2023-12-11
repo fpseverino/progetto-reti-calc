@@ -7,7 +7,6 @@ temp = ttGetMsg(1);
 %disp(['Messaggio: ' temp.messaggio]);
 
 ttTryPost(temp.type, temp);
-ttTryPost(temp.type, temp);
 
 ttCreateJob('Task_Gateway');
 

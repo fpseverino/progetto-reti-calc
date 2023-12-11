@@ -15,6 +15,12 @@ ttCreatePeriodicTask(nome_s, startTime, periodo, funzione);
 prio = 1;
 ttSetPriority(prio, nome_s);
 
+% Log Sensore Aria
+ttCreateLog(nome_s, 1, 'AriaResponseTime', 2000);
+ttCreateLog(nome_s, 2, 'AriaReleaseLatency', 2000);
+ttCreateLog(nome_s, 3, 'AriaStartLatency', 2000);
+ttCreateLog(nome_s, 4, 'AriaExecutionTime', 2000);
+
 nome_s1 = 'Task_Potenza';
 deadline = 0.010;
 funzione1 = 'Potenza_fnctn';
