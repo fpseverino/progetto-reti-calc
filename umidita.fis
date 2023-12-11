@@ -1,7 +1,7 @@
 [System]
 Name='umidita'
 Type='mamdani'
-Version=3.0
+Version=2.0
 NumInputs=2
 NumOutputs=1
 NumRules=9
@@ -10,31 +10,30 @@ OrMethod='max'
 ImpMethod='min'
 AggMethod='max'
 DefuzzMethod='centroid'
-TypeReductionMethod='karnikmendel'
 
 [Input1]
 Name='Umidità Terreno'
-Range=[30 90]
+Range=[0 90]
 NumMFs=3
-MF1='basso':'trimf',[14.0729072907291 39.0729072907291 64.0729072907291],[1],[0.2 0.2]
-MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
-MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+MF1='basso':'trimf',[-37.5 0 37.5]
+MF2='medio':'trimf',[7.5 45 82.5]
+MF3='alto':'trimf',[52.5 90 127.5]
 
 [Input2]
 Name='Umidità Aria'
-Range=[30 90]
+Range=[0 90]
 NumMFs=3
-MF1='basso':'trimf',[5 30 55],[1],[0.2 0.2]
-MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
-MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+MF1='basso':'trimf',[-37.5 0 37.5]
+MF2='medio':'trimf',[7.5 45 82.5]
+MF3='alto':'trimf',[52.5 90 127.5]
 
 [Output1]
 Name='Umidità'
 Range=[30 90]
 NumMFs=3
-MF1='basso':'trimf',[5 30 55],[1],[0.2 0.2]
-MF2='medio':'trimf',[35 60 85],[1],[0.2 0.2]
-MF3='alto':'trimf',[65 90 115],[1],[0.2 0.2]
+MF1='basso':'trimf',[5 30 55]
+MF2='medio':'trimf',[35 60 85]
+MF3='alto':'trimf',[65 90 115]
 
 [Rules]
 1 1, 1 (1) : 1

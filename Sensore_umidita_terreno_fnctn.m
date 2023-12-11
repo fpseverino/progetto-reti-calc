@@ -2,9 +2,12 @@ function[exectime, data] = Sensore_umidita_terreno_fnctn(segment, data)
 
 switch segment
     case 1
+        temp = ttGetMsg;
+        %disp('valore potenza trasmessa: ');
+        disp(temp);
         data.msg.messaggio = ttAnalogIn(1);
         data.msg.timeStamp = ttCurrentTime;
-        exectime = 0.02;
+        exectime = 0.03;
     case 2
         data.msg.type = 'umid_T_signal';
         ttSendMsg(4, data.msg, 80);
