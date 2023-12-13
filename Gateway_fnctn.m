@@ -7,6 +7,15 @@ switch segment
             data.temperatura = temp_msg.messaggio;
             data.timeStamp = temp_msg.timeStamp;
             %disp(['Gateway: valore temperatura ricevuto: ' num2str(data.temperatura) ]);
+            if ttCurrentTime > 2 && ttCurrentTime < 4
+                disp('[Gateway](1): pacchetto temperatura');
+            end
+            if ttCurrentTime > 10 && ttCurrentTime < 12
+                disp('[Gateway](2): pacchetto temperatura');
+            end
+            if ttCurrentTime > 18 && ttCurrentTime < 20
+                disp('[Gateway](3): pacchetto temperatura');
+            end
         else
             %disp('Gateway: nessun valore temperatra ricevuto...');
         end
@@ -18,6 +27,15 @@ switch segment
             data.umiditaTerreno = temp_msg.messaggio;
             data.timeStamp = temp_msg.timeStamp;
             %disp(['Gateway: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno) ]);
+            if ttCurrentTime > 2 && ttCurrentTime < 4
+                disp('[Gateway](1): pacchetto Umidit_T');
+            end
+            if ttCurrentTime > 10 && ttCurrentTime < 12
+                disp('[Gateway](2): pacchetto Umidit_T');
+            end
+            if ttCurrentTime > 18 && ttCurrentTime < 20
+                disp('[Gateway](3): pacchetto Umidit_T');
+            end
         else
             %disp('Gateway: nessun valore umidità terreno ricevuto...');
         end
@@ -29,6 +47,15 @@ switch segment
             data.umiditaAria = temp_msg.messaggio;
             data.timeStamp = temp_msg.timeStamp;
             %disp(['Gateway: valore umidità aria ricevuto: ' num2str(data.umiditaAria) ]);
+            if ttCurrentTime > 2 && ttCurrentTime < 4
+                disp('[Gateway](1): pacchetto Umidit_A');
+            end
+            if ttCurrentTime > 10 && ttCurrentTime < 12
+                disp('[Gateway](2): pacchetto Umidit_A');
+            end
+            if ttCurrentTime > 18 && ttCurrentTime < 20
+                disp('[Gateway](3): pacchetto Umidit_A');
+            end
         else
             %disp('Gateway: nessun valore umidità aria ricevuto...');
         end
@@ -40,9 +67,7 @@ switch segment
         msg.messaggio = data.temperatura;
         delay = ttCurrentTime - data.timeStamp;
         msg.type = 'temp_signal';
-        Throughput_byte = 80 / 8;
-        Throughput1 = Throughput_byte / delay;
-        %disp(Throughput1);
+        ttAnalogOut(1, delay);
         ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore temperatura...');
@@ -51,10 +76,8 @@ switch segment
     if data.umiditaTerreno ~= 0
         msg.messaggio = data.umiditaTerreno;
         delay = ttCurrentTime - data.timeStamp;
+        ttAnalogOut(2, delay);
         msg.type = 'umid_T_signal';
-        Throughput_byte = 80 / 8;
-        Throughput2 = Throughput_byte / delay;
-        %disp(Throughput2);
         ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore umidità terreno...');
@@ -63,16 +86,23 @@ switch segment
     if data.umiditaAria ~= 0
         msg.messaggio = data.umiditaAria;
         delay = ttCurrentTime - data.timeStamp;
+        ttAnalogOut(3, delay);
         msg.type = 'umid_A_signal';
-        Throughput_byte = 80 / 8;
-        Throughput3 = Throughput_byte / delay;
-        %disp(Throughput3);
         ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore umidità aria...');
     end
-    ThroughputSensore = Throughput1 + Throughput2 + Throughput3;
-    %disp(ThroughputSensore);
+
+    if ttCurrentTime > 2 && ttCurrentTime < 4
+        disp('[Gateway](1): mando al controllore');
+    end
+    if ttCurrentTime > 10 && ttCurrentTime < 12
+        disp('[Gateway](2): mando al controllore');
+    end
+    if ttCurrentTime > 18 && ttCurrentTime < 20
+        disp('[Gateway](3): mando al controllore');
+    end
+
     exectime = -1;
 end
 
