@@ -17,12 +17,6 @@ ttCreatePeriodicTask(nome_s, startTime, periodo, funzione);
 prio = 1;
 ttSetPriority(prio, nome_s);
 
-% Log Sensore Temperatura
-ttCreateLog(nome_s, 1, 'TemperaturaResponseTime', 2000);
-ttCreateLog(nome_s, 2, 'TemperaturaReleaseLatency', 2000);
-ttCreateLog(nome_s, 3, 'TemperaturaStartLatency', 2000);
-ttCreateLog(nome_s, 4, 'TemperaturaExecutionTime', 2000);
-
 nome_s1 = 'Task_Potenza';
 deadline = 0.010;
 funzione1 = 'Potenza_fnctn';
@@ -39,3 +33,9 @@ funzione_nh = 'nethandsens_fnctn';
 
 ttCreateHandler(nome_nh, 1, funzione_nh);
 ttAttachNetworkHandler(1, nome_nh);
+
+% Log Sensore Temperatura
+ttCreateLog(nome_s, 1, 'TemperaturaResponseTime', 2000);
+ttCreateLog(nome_s, 2, 'TemperaturaReleaseLatency', 2000);
+ttCreateLog(nome_s, 3, 'TemperaturaStartLatency', 2000);
+ttCreateLog(nome_s, 4, 'TemperaturaExecutionTime', 2000);

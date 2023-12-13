@@ -18,13 +18,13 @@ ttCreateTask(nome_c, deadline, funzione);
 prio = 1;
 ttSetPriority(prio, nome_c);
 
-ttCreateLog(nome_c, 1, 'ControlloreResponseTime', 2000);
-ttCreateLog(nome_c, 2, 'ControlloreReleaseLatency', 2000);
-ttCreateLog(nome_c, 3, 'ControlloreStartLatency', 2000);
-ttCreateLog(nome_c, 4, 'ControlloreExecutionTime', 2000);
-
 nome_hd = 'nw_handlerControllore';
 funzione_hd = 'nethandlerControllore_fnctn';
 
 ttCreateHandler(nome_hd, 1, funzione_hd);
 ttAttachNetworkHandler(nome_hd);
+
+ttCreateLog(nome_c, 1, 'ControlloreResponseTime', 2000);
+ttCreateLog(nome_c, 2, 'ControlloreReleaseLatency', 2000);
+ttCreateLog(nome_c, 3, 'ControlloreStartLatency', 2000);
+ttCreateLog(nome_c, 4, 'ControlloreExecutionTime', 2000);
