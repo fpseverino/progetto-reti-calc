@@ -64,19 +64,17 @@ switch segment
 
     case 4
     if data.temperatura ~= 0
-        msg.messaggio = data.temperatura;
-        delay = ttCurrentTime - data.timeStamp;
+        msg.messaggio.temp = data.temperatura;
+        msg.messaggio.time = data.timeStamp;
         msg.type = 'temp_signal';
-        ttAnalogOut(1, delay);
         ttSendMsg([2 2], msg, 80);
     else
         %disp('Gateway: non posso inoltrare valore temperatura...');
     end
     
     if data.umiditaTerreno ~= 0
-        msg.messaggio = data.umiditaTerreno;
-        delay = ttCurrentTime - data.timeStamp;
-        ttAnalogOut(2, delay);
+        msg.messaggio.umidT = data.umiditaTerreno;
+        msg.messaggio.time = data.timeStamp;
         msg.type = 'umid_T_signal';
         ttSendMsg([2 2], msg, 80);
     else
@@ -84,9 +82,8 @@ switch segment
     end
 
     if data.umiditaAria ~= 0
-        msg.messaggio = data.umiditaAria;
-        delay = ttCurrentTime - data.timeStamp;
-        ttAnalogOut(3, delay);
+        msg.messaggio.umidA = data.umiditaAria;
+        msg.messaggio.time = data.timeStamp;
         msg.type = 'umid_A_signal';
         ttSendMsg([2 2], msg, 80);
     else

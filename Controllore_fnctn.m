@@ -5,7 +5,11 @@ switch segment
         temp_msg = ttTryFetch('temp_signal');
 
         if ~isempty(temp_msg)
-            data.temperatura = temp_msg;
+            data.time = temp_msg.time;
+            ReactionTime = ttCurrentTime - data.time;
+            disp('valore del Reaction Time:');
+            disp(ReactionTime);
+            data.temperatura = temp_msg.temp;
             %disp(['Controllore: valore temperatura ricevuto: ' num2str(data.temperatura)]);
         else
             %disp('Controllore: non ho ricevuto nessun valore...');
@@ -17,6 +21,10 @@ switch segment
         temp_msg = ttTryFetch('umid_T_signal');
 
         if ~isempty(temp_msg)
+            data.time = temp_msg.time;
+            ReactionTime = ttCurrentTime - data.time;
+            disp('valore del Reaction Time:');
+            disp(ReactionTime);
             data.umiditaTerreno = temp_msg;
             %disp(['Controllore: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno)]);
         else
@@ -30,6 +38,10 @@ switch segment
         temp_msg = ttTryFetch('umid_A_signal');
 
         if ~isempty(temp_msg)
+            data.time = temp_msg.time;
+            ReactionTime = ttCurrentTime - data.time;
+            disp('valore del Reaction Time:');
+            disp(ReactionTime);
             data.umiditaAria = temp_msg;
             %disp(['Controllore: valore umidità aria ricevuto: ' num2str(data.umiditaAria)]);
         else

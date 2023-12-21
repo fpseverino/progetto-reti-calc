@@ -6,10 +6,10 @@ switch segment
         %disp('valore potenza trasmessa: ');
         disp(temp);
         data.msg.messaggio = ttAnalogIn(1);
-        data.msg.timeStamp = ttCurrentTime;
         exectime = 0.03;
     case 2
         data.msg.type = 'umid_T_signal';
+        data.msg.timeStamp = ttCurrentTime;
         ttSendMsg(4, data.msg, 80);
         exectime = 0.02;
     case 3
