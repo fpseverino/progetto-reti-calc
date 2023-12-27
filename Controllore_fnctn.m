@@ -25,7 +25,8 @@ switch segment
             ReactionTime = ttCurrentTime - data.time;
             disp('valore del Reaction Time:');
             disp(ReactionTime);
-            data.umiditaTerreno = temp_msg;
+            data.umiditaTerreno = temp_msg.temp;
+            disp(data.umiditaTerreno);
             %disp(['Controllore: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno)]);
         else
             %disp('Controllore: non ho ricevuto nessun valore...');
@@ -42,7 +43,7 @@ switch segment
             ReactionTime = ttCurrentTime - data.time;
             disp('valore del Reaction Time:');
             disp(ReactionTime);
-            data.umiditaAria = temp_msg;
+            data.umiditaAria = temp_msg.temp;
             %disp(['Controllore: valore umidità aria ricevuto: ' num2str(data.umiditaAria)]);
         else
             %disp('Controllore: non ho ricevuto nessun valore...');
