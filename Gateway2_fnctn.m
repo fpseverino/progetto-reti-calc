@@ -3,13 +3,13 @@ function[exectime, data] = Gateway2_fnctn(segment, data)
 switch segment
     case 1
         temp_msg = ttTryFetch('control_signal');
-        if ttCurrentTime > 2 && ttCurrentTime < 4
+        if ttCurrentTime > 60 && ttCurrentTime < 65
             disp('[Gateway](1): ricevuto controllore');
         end
-        if ttCurrentTime > 10 && ttCurrentTime < 12
+        if ttCurrentTime > 300 && ttCurrentTime < 305
             disp('[Gateway](2): ricevuto controllore');
         end
-        if ttCurrentTime > 18 && ttCurrentTime < 20
+        if ttCurrentTime > 540 && ttCurrentTime < 545
             disp('[Gateway](3): ricevuto controllore');
         end
         temp_msg.type = 'control_signal';
@@ -52,17 +52,15 @@ switch segment
             disp('errore');
         end
 
-        if ttCurrentTime > 2 && ttCurrentTime < 4
+        if ttCurrentTime > 60 && ttCurrentTime < 65
             disp('[Gateway](1): mando attuatore');
         end
-        if ttCurrentTime > 10 && ttCurrentTime < 12
+        if ttCurrentTime > 300 && ttCurrentTime < 305
             disp('[Gateway](2): mando attuatore');
         end
-        if ttCurrentTime > 18 && ttCurrentTime < 20
+        if ttCurrentTime > 540 && ttCurrentTime < 545
             disp('[Gateway](3): mando attuatore');
         end
-        
-        delay = ttCurrentTime - data.timeStamp;
 
         exectime = -1;
 end
