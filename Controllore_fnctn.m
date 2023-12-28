@@ -7,8 +7,7 @@ switch segment
         if ~isempty(temp_msg)
             data.time = temp_msg.time;
             ReactionTime = ttCurrentTime - data.time;
-            disp('valore del Reaction Time:');
-            disp(ReactionTime);
+            disp(['Reaction Time (temperatura): ' num2str(ReactionTime)]);
             data.temperatura = temp_msg.temp;
             %disp(['Controllore: valore temperatura ricevuto: ' num2str(data.temperatura)]);
         else
@@ -23,10 +22,8 @@ switch segment
         if ~isempty(temp_msg)
             data.time = temp_msg.time;
             ReactionTime = ttCurrentTime - data.time;
-            disp('valore del Reaction Time:');
-            disp(ReactionTime);
+            disp(['Reaction Time (terreno): ' num2str(ReactionTime)]);
             data.umiditaTerreno = temp_msg.temp;
-            disp(data.umiditaTerreno);
             %disp(['Controllore: valore umidità terreno ricevuto: ' num2str(data.umiditaTerreno)]);
         else
             %disp('Controllore: non ho ricevuto nessun valore...');
@@ -41,8 +38,7 @@ switch segment
         if ~isempty(temp_msg)
             data.time = temp_msg.time;
             ReactionTime = ttCurrentTime - data.time;
-            disp('valore del Reaction Time:');
-            disp(ReactionTime);
+            disp(['Reaction Time (aria): ' num2str(ReactionTime)]);
             data.umiditaAria = temp_msg.temp;
             %disp(['Controllore: valore umidità aria ricevuto: ' num2str(data.umiditaAria)]);
         else
